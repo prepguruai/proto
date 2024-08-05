@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tensorlearn.auth.login";
+option java_outer_classname = "LoginInternal";
+
+option go_package = "generated/pb";
+
+package login;
+
+service Profile {
+    rpc createOrUpdateProfile(CreateProfileRequest) returns (UserProfileProto) {}
+    rpc getProfile(IdRequest) returns (UserProfileProto) {}
+}
+
+enum Gender {
+    Unspecified = 0;
+    Male = 1;
+    Female = 2;
+}
+
+message UserProfileProto {
+    string userId = 1;
+    string name = 2;
+    string photoUrl = 3;
+    Gender gender = 5;
+    int64 createdOn = 13;
+}
+
+message CreateProfileRequest {
+    string name = 1;
+    Gender gender = 2;
+    string photoUrl = 3;
+}
+
+message IdRequest {
+    string userId = 1;
+}

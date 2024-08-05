@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tensorlearn.quiz";
+option java_outer_classname = "StatInternal";
+
+option go_package = "generated/pb";
+
+package quiz;
+
+service Stat {
+    rpc GetStats(StatRequest) returns (Stats) {}
+}
+
+message StatRequest {
+    string userId = 1;
+    string tenant = 2;
+}
+
+message Stats {
+    string userId = 1;
+    double accuracy = 2;
+    int32 correct = 3;
+    int32 total = 4;
+
+    repeated SubjectAccuracy subjectAccuracy = 5;
+}
+
+message SubjectAccuracy {
+    string subject = 1;
+    double accuracy = 2;
+
+    repeated TopicAccuracy topicAccuracy = 3;
+}
+
+message TopicAccuracy {
+    string topic = 1;
+    double accuracy = 2;
+}

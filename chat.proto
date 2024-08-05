@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tensorlearn.quiz";
+option java_outer_classname = "QuizInternal";
+
+option go_package = "generated/pb";
+
+package chat;
+
+service Chat {
+    rpc Reply(ChatMessage) returns (ChatReply) {}
+}
+
+message ChatMessage {
+    string tenant = 1;
+    string message = 2;
+    string chatId = 3;
+}
+
+message ChatReply {
+    string reply = 1;
+}

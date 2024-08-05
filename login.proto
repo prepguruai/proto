@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tensorlearn.auth.login";
+option java_outer_classname = "LoginInternal";
+
+option go_package = "generated/pb";
+
+package login;
+
+service Login {
+    rpc Login(LoginRequest) returns (AuthResponse) {}
+    rpc SignUp(SignUpRequest) returns (AuthResponse) {}
+}
+
+message LoginRequest {
+    string email = 1;
+    string password = 2;
+}
+
+message AuthResponse {
+    string jwt = 1;
+    string userType = 2;
+}
+
+message SignUpRequest {
+    string email = 1;
+    string password = 2;
+}
