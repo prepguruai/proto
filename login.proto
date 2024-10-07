@@ -11,6 +11,7 @@ package login;
 service Login {
     rpc Login(LoginRequest) returns (AuthResponse) {}
     rpc LoginWithGoogle(GoogleLoginRequest) returns (AuthResponse) {}
+    rpc AdminLoginWithGoogle(GoogleLoginRequest) returns (AuthResponse) {}
     rpc SignUp(SignUpRequest) returns (AuthResponse) {}
 }
 
